@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  backend:
+    image: node:18
+    container_name: nest-backend
+    working_dir: /app
+    volumes:
+      - ./backend:/app
+    ports:
+      - '3000:3000'
+    command: sh -c "npm install && npm run start:dev"
+    environment:
+      - NODE_ENV=development
+      - DATABASE_URL=postgres://postgres:postgres@db:5432/mydb
+    depends_on:
+      - db
+
+  frontend:
+    image: node:18
+    container_name: angular-frontend
+    working_dir: /app
+    volumes:
+      - ./frontend:/app
+    ports:
+      - '4200:4200'
+    command: sh -c "npm install && npx ng serve --host=0.0.0.0"
+    environment:
+      - NODE_ENV=development
+
+  db:
+    image: postgres:15
+    container_name: postgres-db
+    restart: always
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: mydb
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  adminer:
+    image: adminer
+    container_name: adminer
+    restart: always
+    ports:
+      - '8080:8080'
+    depends_on:
+      - db
+
+volumes:
+  db-data:

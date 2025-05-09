@@ -1,0 +1,4 @@
+<div class="chat-container" fxLayout="row" fxLayout.lt-md="column">
+    <conversation-list (selectConversation)="onConversationSelected($event)" fxFlex="30"></conversation-list>
+    <window [conversationId]="selectedConversationId" fxFlex></window>
+</div>
