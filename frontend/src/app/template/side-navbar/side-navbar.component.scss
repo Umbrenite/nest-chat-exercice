@@ -1,5 +1,16 @@
 .side-navbar {
-    width: 100px;
+    width: 8vw;
     height: 100vh;
     background-color: #616161;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.group-icon {
+    margin-top: 20px;
+    width:70px;
+    height:70px;
+    border-radius: 100%;
 }

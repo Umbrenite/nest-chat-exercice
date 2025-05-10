@@ -1,3 +1,4 @@
 <div class="side-navbar">
-    
+    <img class="group-icon" src="https://cdn-icons-png.freepik.com/256/1077/1077114.png?semt=ais_hybrid" alt="">
+    <ng-content *ngFor="let group of listOfGroups"><img class="group-icon" src="{{group.icon_url}}" alt=""></ng-content>
 </div>
