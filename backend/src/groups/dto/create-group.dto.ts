@@ -11,7 +11,7 @@ export class CreateGroupDto {
 
     @IsNotEmpty()
     @IsString()
-    user_ids: string;
+    user_ids: string[];
 
     @IsNotEmpty()
     @IsString()

@@ -27,6 +27,11 @@ export class UsersController {
     return this.userService.findOne(id);
   }
 
+  @Get('group/:group_id')
+  findByGroupId(@Param('group_id') group_id: string): Promise<User[] | null> {    
+    return this.userService.findByGroupId(group_id);
+  }
+
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.userService.update(+id, updateUserDto);

@@ -13,4 +13,7 @@ export class Discussion {
 
     @Column()
     group_id: string;
+
+    @Column()
+    timestamp: Date;
 }

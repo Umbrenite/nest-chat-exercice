@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString } from "class-validator";
+import { IsArray, IsNotEmpty, IsString } from "class-validator";
 
 export class CreateUserDto {
         @IsNotEmpty()
@@ -26,6 +26,6 @@ export class CreateUserDto {
         custom_profil_color: string;
     
         @IsNotEmpty()
-        @IsString()
-        group_ids: string;
+        @IsArray()
+        group_ids: string[];
 }

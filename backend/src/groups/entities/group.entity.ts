@@ -11,8 +11,8 @@ export class Group {
     @Column()
     description: string;
 
-    @Column()
-    user_ids: string;
+    @Column('text', { array: true })
+    user_ids: string[];
 
     @Column()
     discussion_id: string;

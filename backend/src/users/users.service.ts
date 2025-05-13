@@ -26,6 +26,13 @@ export class UsersService {
     return this.userRepository.findOneBy({ id });
   }
 
+  findByGroupId(group_id: string): Promise<User[]> {
+    return this.userRepository
+      .createQueryBuilder('user')
+      .where(':group_id = ANY(user.group_ids)', { group_id })
+      .getMany();
+  }
+
   update(id: number, updateUserDto: UpdateUserDto) {
     return this.userRepository.update(+id, updateUserDto);
   }

@@ -1,1 +1,11 @@
-<p>group-chat works!</p>
+<div class="chat-container">
+    <div class="chat-container-center" *ngFor="let chat of fetchDiscussionList; let i = index">
+        <ng-content *ngIf="fetchUserPerChat[i]">
+            <chat-bubble 
+            [message]="chat.message"
+            username="{{fetchUserPerChat[i]?.username}}"
+            [isUserMessage]="+chat.user_id === 1">
+            </chat-bubble>
+        </ng-content>
+    </div>
+</div>

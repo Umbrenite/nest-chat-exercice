@@ -23,6 +23,6 @@ export class User {
     @Column()
     custom_profil_color: string;
 
-    @Column()
-    group_ids: string;
+    @Column("text", { array: true, nullable: true })
+    group_ids: string[];
 }
