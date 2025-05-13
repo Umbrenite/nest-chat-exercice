@@ -23,6 +23,9 @@ export class User {
     @Column()
     custom_profil_color: string;
 
+    @Column()
+    custom_username_color: string;
+
     @Column("text", { array: true, nullable: true })
     group_ids: string[];
 }

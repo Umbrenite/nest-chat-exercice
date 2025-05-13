@@ -12,4 +12,6 @@ export class ChatBubbleComponent {
   @Input() timestamp: string = '';
   @Input() isUserMessage: boolean = true;
   @Input() username: string = '';
+  @Input() chatBubbleColor: string = '';
+  @Input() chatUsernameColor: string = '';
 }

@@ -26,12 +26,14 @@ export class GroupChatComponent {
         const response = await this.fetchGroupDiscussions(groupId);
         this.fetchDiscussionList = response.data;
         for (const chat of this.fetchDiscussionList) {
-          const userResponse = await this.fetchUserByUserId(chat.user_id);
+          const userResponse = await this.fetchUserByUserId(chat.user_id);          
           this.fetchUserPerChat.push(userResponse.data);
         }
       } catch (error) {
         console.error('Erreur lors de la récupération des discussions', error);
       }
+      console.log(this.fetchUserPerChat);
+      
     });
   }
 

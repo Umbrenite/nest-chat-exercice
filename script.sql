@@ -18,11 +18,11 @@ BEGIN
   END IF;
 END$$;
 
-INSERT INTO "user" ("id", "firstname", "lastname", "username", "password", "email", "custom_profil_color", "group_ids") 
+INSERT INTO "user" ("id", "firstname", "lastname", "username", "password", "email", "custom_profil_color", "custom_username_color", "group_ids") 
 VALUES
-    (1, 'John', 'Doe', 'john_doe', 'hashed_password_1', 'john.doe@example.com', '#FF5733', ARRAY['1']),
-    (2, 'Jane', 'Smith', 'jane_smith', 'hashed_password_2', 'jane.smith@example.com', '#33FF57', ARRAY['1', '2']),
-    (3, 'Alice', 'Johnson', 'alice_johnson', 'hashed_password_3', 'alice.johnson@example.com', '#5733FF', ARRAY['2']);
+    (1, 'John', 'Doe', 'john_doe', 'hashed_password_1', 'john.doe@example.com', '#FF5733', '#FFFFFF', ARRAY['1']),
+    (2, 'Jane', 'Smith', 'jane_smith', 'hashed_password_2', 'jane.smith@example.com', '#33FF57', '#FFFFFF', ARRAY['1', '2']),
+    (3, 'Alice', 'Johnson', 'alice_johnson', 'hashed_password_3', 'alice.johnson@example.com', '#5733FF', '#FFFFFF', ARRAY['2']);
 
 INSERT INTO "group" ("id", "title", "description", "user_ids", "icon_url", "discussion_id") 
 VALUES

@@ -5,6 +5,7 @@ export type User = {
     username: string;
     password: string;
     email: string;
-    ustom_profil_color: string;
+    custom_profil_color: string;
+    custom_username_color: string;
     group_ids: string;
 }

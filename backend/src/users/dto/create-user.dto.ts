@@ -24,6 +24,10 @@ export class CreateUserDto {
         @IsNotEmpty()
         @IsString()
         custom_profil_color: string;
+
+        @IsNotEmpty()
+        @IsString()
+        custom_username_color: string;
     
         @IsNotEmpty()
         @IsArray()

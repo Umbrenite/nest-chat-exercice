@@ -1,9 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'group-icon',
-  imports: [RouterLink],
+  imports: [],
   templateUrl: './group-icon.component.html',
   styleUrl: './group-icon.component.scss'
 })

@@ -4,7 +4,9 @@
             <chat-bubble 
             [message]="chat.message"
             username="{{fetchUserPerChat[i]?.username}}"
-            [isUserMessage]="+chat.user_id === 1">
+            [isUserMessage]="+chat.user_id === 1"
+            chatBubbleColor = "{{fetchUserPerChat[i]?.custom_profil_color}}"
+            chatUsernameColor = "{{fetchUserPerChat[i]?.custom_username_color}}">
             </chat-bubble>
         </ng-content>
     </div>
