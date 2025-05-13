@@ -3,4 +3,5 @@ export type Discussion = {
     message: string;
     user_id: string;
     group_id: string;
+    timestamp: Date;
 }

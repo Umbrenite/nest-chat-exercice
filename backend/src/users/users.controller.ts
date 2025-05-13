@@ -9,41 +9,31 @@ import { Repository } from 'typeorm';
 @Controller('users')
 export class UsersController {
   constructor(
-    @InjectRepository(User)
-    private userRepository: Repository<User>,
+    private userService: UsersService,
   ) {}
 
-    @Get()
-    findAll(): Promise<User[]> {
-      return this.userRepository.find();
-    }
-  
-    @Get(':id')
-    findOne(id: number): Promise<User | null> {
-      return this.userRepository.findOneBy({ id });
-    }
-  // @Post()
-  // create(@Body() createUserDto: CreateUserDto) {
-  //   return this.usersService.create(createUserDto);
-  // }
+  @Post()
+  create(@Body() createUserDto: CreateUserDto) {
+    return this.userService.create(createUserDto);  
+  }
 
-  // @Get()
-  // findAll() {
-  //   return this.usersService.findAll();
-  // }
+  @Get()
+  findAll(): Promise<User[]> {
+    return this.userService.findAll();
+  }
 
-  // @Get(':id')
-  // findOne(@Param('id') id: string) {
-  //   return this.usersService.findOne(+id);
-  // }
+  @Get(':id')
+  findOne(@Param('id') id: number): Promise<User | null> {
+    return this.userService.findOne(id);
+  }
 
-  // @Patch(':id')
-  // update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-  //   return this.usersService.update(+id, updateUserDto);
-  // }
+  @Patch(':id')
+  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
+    return this.userService.update(+id, updateUserDto);
+  }
 
-  // @Delete(':id')
-  // remove(@Param('id') id: string) {
-  //   return this.usersService.remove(+id);
-  // }
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.userService.remove(+id);
+  }
 }

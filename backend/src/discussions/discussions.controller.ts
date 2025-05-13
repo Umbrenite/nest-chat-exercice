@@ -2,48 +2,41 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { DiscussionsService } from './discussions.service';
 import { CreateDiscussionDto } from './dto/create-discussion.dto';
 import { UpdateDiscussionDto } from './dto/update-discussion.dto';
-import { Repository } from 'typeorm';
 import { Discussion } from './entities/discussion.entity';
-import { InjectRepository } from '@nestjs/typeorm';
 
 @Controller('discussions')
 export class DiscussionsController {
   constructor(
-    @InjectRepository(Discussion)
-    private discussionRepository: Repository<Discussion>,
+    private discussionService: DiscussionsService,
   ) {}
-  // @Post()
-  // create(@Body() createDiscussionDto: CreateDiscussionDto) {
-  //   return this.discussionsService.create(createDiscussionDto);
-  // }
+
+  @Post()
+  create(@Body() createDiscussionDto: CreateDiscussionDto) {
+    return this.discussionService.create(createDiscussionDto);  
+  }
 
   @Get()
   findAll(): Promise<Discussion[]> {
-    return this.discussionRepository.find();
+    return this.discussionService.findAll();
   }
 
   @Get(':id')
-  findOne(id: number): Promise<Discussion | null> {
-    return this.discussionRepository.findOneBy({ id });
+  findOne(@Param('id') id: number): Promise<Discussion | null> {
+    return this.discussionService.findOne(id);
   }
 
-  // @Get()
-  // findAll() {
-  //   return this.discussionsService.findAll();
-  // }
+  @Get('group/:group_id')
+  findByGroupId(@Param('group_id') group_id: string): Promise<Discussion[] | null> {    
+    return this.discussionService.findByGroupId(group_id);
+  }
 
-  // @Get(':id')
-  // findOne(@Param('id') id: string) {
-  //   return this.discussionsService.findOne(+id);
-  // }
+  @Patch(':id')
+  update(@Param('id') id: string, @Body() updateDiscussionDto: UpdateDiscussionDto) {
+    return this.discussionService.update(+id, updateDiscussionDto);
+  }
 
-  // @Patch(':id')
-  // update(@Param('id') id: string, @Body() updateDiscussionDto: UpdateDiscussionDto) {
-  //   return this.discussionsService.update(+id, updateDiscussionDto);
-  // }
-
-  // @Delete(':id')
-  // remove(@Param('id') id: string) {
-  //   return this.discussionsService.remove(+id);
-  // }
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.discussionService.remove(+id);
+  }
 }

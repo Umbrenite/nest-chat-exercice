@@ -2,48 +2,36 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { GroupsService } from './groups.service';
 import { CreateGroupDto } from './dto/create-group.dto';
 import { UpdateGroupDto } from './dto/update-group.dto';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
 import { Group } from './entities/group.entity';
 
 @Controller('groups')
 export class GroupsController {
   constructor(
-    @InjectRepository(Group)
-    private groupRepository: Repository<Group>,
+    private groupService: GroupsService,
   ) {}
 
-    @Get()
-    findAll(): Promise<Group[]> {
-      return this.groupRepository.find();
-    }
-  
-    @Get(':id')
-    findOne(id: number): Promise<Group | null> {
-      return this.groupRepository.findOneBy({ id });
-    }
-  // @Post()
-  // create(@Body() createGroupDto: CreateGroupDto) {
-  //   return this.groupsService.create(createGroupDto);
-  // }
+  @Post()
+  create(@Body() createGroupDto: CreateGroupDto) {
+    return this.groupService.create(createGroupDto);  
+  }
 
-  // @Get()
-  // findAll() {
-  //   return this.groupsService.findAll();
-  // }
+  @Get()
+  findAll(): Promise<Group[]> {
+    return this.groupService.findAll();
+  }
 
-  // @Get(':id')
-  // findOne(@Param('id') id: string) {
-  //   return this.groupsService.findOne(+id);
-  // }
+  @Get(':id')
+  findOne(@Param('id') id: number): Promise<Group | null> {
+    return this.groupService.findOne(id);
+  }
 
-  // @Patch(':id')
-  // update(@Param('id') id: string, @Body() updateGroupDto: UpdateGroupDto) {
-  //   return this.groupsService.update(+id, updateGroupDto);
-  // }
+  @Patch(':id')
+  update(@Param('id') id: string, @Body() updateGroupDto: UpdateGroupDto) {
+    return this.groupService.update(+id, updateGroupDto);
+  }
 
-  // @Delete(':id')
-  // remove(@Param('id') id: string) {
-  //   return this.groupsService.remove(+id);
-  // }
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.groupService.remove(+id);
+  }
 }
