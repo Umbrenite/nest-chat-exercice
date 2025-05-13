@@ -4,6 +4,8 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './entities/user.entity';
+import * as  bcrypt from "bcrypt";
+
 
 @Injectable()
 export class UsersService {
@@ -39,5 +41,31 @@ export class UsersService {
 
   remove(id: number) {
     return this.userRepository.delete(+id);
+  }
+  
+  async login(email: string, password: string): Promise<{ success: boolean; message: string; user?: any }> {
+    if (!email || !password) {
+      return { success: false, message: 'Email and password are required' };
+    }
+    
+    const user = await this.userRepository
+    .createQueryBuilder('user')
+    .addSelect('user.password')
+    .where('user.email = :email', { email })
+    .getOne();
+
+    if (!user) {
+      return { success: false, message: 'User not found' };
+    } else {    
+      const passwordMatch = await bcrypt.compare(password, user.password);
+      if (!passwordMatch) {
+        return { success: false, message: 'Invalid email or password' };
+      }
+  
+      const { password: _, ...userWithoutPassword } = user;
+      sessionStorage.setItem("token", user.id.toString());
+      return { success: true, message: 'Login successful', user: userWithoutPassword };
+    }
+
   }
 }

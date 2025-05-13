@@ -3,6 +3,7 @@ import apiClient from '../../config/axiosConfig';
 import { CommonModule } from '@angular/common';
 import { Group } from '../../../../types/Group';
 import { GroupIconComponent } from '../group-icon/group-icon.component';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'side-navbar',
@@ -11,11 +12,15 @@ import { GroupIconComponent } from '../group-icon/group-icon.component';
   styleUrl: './side-navbar.component.scss'
 })
 export class SideNavbarComponent {
+  constructor(private authService: AuthService) {
+  }
 
   listOfGroups : Group[] = [];
+  isLoggedIn : boolean = false;
 
   async ngOnInit() {
-    this.listOfGroups = (await apiClient.get("/groups")).data;    
+    this.listOfGroups = (await apiClient.get("/groups")).data; 
+    this.isLoggedIn = this.authService.isLoggedIn();   
   }
 
 }

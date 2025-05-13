@@ -1,6 +1,8 @@
 <div class="side-navbar">
     <group-icon iconUrl="https://cdn-icons-png.freepik.com/256/1077/1077114.png?semt=ais_hybrid"></group-icon>
-    <ng-content *ngFor="let group of listOfGroups">
-        <group-icon iconUrl={{group.icon_url}} groupId="{{group.id}}"/>
+    <ng-content *ngIf="isLoggedIn">
+        <ng-content *ngFor="let group of listOfGroups">
+            <group-icon iconUrl={{group.icon_url}} groupId="{{group.id}}"/>
+        </ng-content>
     </ng-content>
 </div>

@@ -17,6 +17,11 @@ export class UsersController {
     return this.userService.create(createUserDto);  
   }
 
+  @Post('login')
+  login(@Body() loginForm: {email: string, password: string}) {    
+    return this.userService.login(loginForm.email, loginForm.password);  
+  }
+
   @Get()
   findAll(): Promise<User[]> {
     return this.userService.findAll();
