@@ -3,7 +3,7 @@
   <div class="bubble" [style.background-color]="chatBubbleColor" [style.color]="chatUsernameColor">
     <div class="message-header">
       <span class="username">{{username}}</span>
-      <!-- <span class="timestamp">{{ timestamp }}</span> -->
+      <b class="timestamp" [style.color]="chatUsernameColor">{{ timestamp | date:'dd/MM/yyyy' }}</b>
     </div>
     <p class="message">{{ message }}</p>
   </div>
