@@ -1,11 +1,12 @@
 <div class="side-navbar">
-    <a href="/"><group-icon iconUrl="https://cdn-icons-png.freepik.com/256/1077/1077114.png?semt=ais_hybrid"></group-icon></a>
+    <a href="/"><group-icon iconUrl="https://cdn-icons-png.freepik.com/256/1077/1077114.png?semt=ais_hybrid" /></a>
     <ng-content *ngIf="isLoggedIn">
         <ng-content *ngFor="let group of listOfGroups">
             <a href="/groups/{{group.id}}"><group-icon iconUrl={{group.icon_url}} /></a>
         </ng-content>
     </ng-content>
     <ng-content *ngIf="isLoggedIn">
-        <group-icon class="static-logout-group" iconUrl="https://cdn1.iconfinder.com/data/icons/heroicons-ui/24/logout-1024.png" (click)="logout()"></group-icon>
+        <a href="/profile"><group-icon class="static-profile-group" iconUrl="https://static.thenounproject.com/png/322479-200.png" /></a>
+        <group-icon class="static-logout-group" iconUrl="https://cdn1.iconfinder.com/data/icons/heroicons-ui/24/logout-1024.png" (click)="logout()" />
     </ng-content>
 </div>
