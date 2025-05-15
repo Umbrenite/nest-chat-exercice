@@ -5,5 +5,7 @@
             <a href="/groups/{{group.id}}"><group-icon iconUrl={{group.icon_url}} /></a>
         </ng-content>
     </ng-content>
-    <group-icon class="static-logout-group" iconUrl="https://cdn1.iconfinder.com/data/icons/heroicons-ui/24/logout-1024.png" (click)="logout()"></group-icon>
+    <ng-content *ngIf="isLoggedIn">
+        <group-icon class="static-logout-group" iconUrl="https://cdn1.iconfinder.com/data/icons/heroicons-ui/24/logout-1024.png" (click)="logout()"></group-icon>
+    </ng-content>
 </div>

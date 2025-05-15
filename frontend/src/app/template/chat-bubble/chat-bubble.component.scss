@@ -18,9 +18,9 @@
     
         .bubble {
         max-width: 60%;
+        min-width: 200px;
         padding: 10px 15px;
         border-radius: 20px;
-        // background-color: #f0f0f0;
         box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
         position: relative;
         display: inline-block;
@@ -29,7 +29,6 @@
             display: flex;
             justify-content: space-between;
             font-size: 12px;
-            // color: #8a8a8a;
     
             .username {
             font-weight: bold;
@@ -48,23 +47,8 @@
         }
         }
     
-        /* User message styles */
         &.user-message .bubble {
-        // background-color: #363636;
-        // color: white;
         align-self: flex-end;
-    
-        .message-header {
-            // color: white;
-    
-            .timestamp {
-            // color: #d3d3d3;
-            }
-        }
-    
-        .message {
-            // color: white;
-        }
         }
     }
 }
