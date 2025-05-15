@@ -63,7 +63,6 @@ export class UsersService {
       }
   
       const { password: _, ...userWithoutPassword } = user;
-      sessionStorage.setItem("token", user.id.toString());
       return { success: true, message: 'Login successful', user: userWithoutPassword };
     }
 

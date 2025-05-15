@@ -5,6 +5,7 @@ import { Discussion } from '../../../../types/Discussion';
 import { CommonModule } from '@angular/common';
 import { User } from '../../../../types/User';
 import { ChatBubbleComponent } from '../../template/chat-bubble/chat-bubble.component';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-group-chat',
@@ -13,12 +14,14 @@ import { ChatBubbleComponent } from '../../template/chat-bubble/chat-bubble.comp
   styleUrls: ['./group-chat.component.scss']
 })
 export class GroupChatComponent {
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private authService: AuthService) {}
 
   fetchDiscussionList: Discussion[] = [];
   fetchUserPerChat : User[] = []
+  currentLoggedInUserId : number = 0;
 
   async ngOnInit() {
+    this.currentLoggedInUserId = Number.parseInt(this.authService.getToken() as string);
     this.route.params.subscribe(async params => {
       const groupId = params['id'];
 
