@@ -5,6 +5,7 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
 import { Repository } from 'typeorm';
+import { CheckEmailDto } from './dto/check-email.dto';
 
 @Controller('users')
 export class UsersController {
@@ -15,6 +16,12 @@ export class UsersController {
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
     return this.userService.create(createUserDto);  
+  }
+  
+  @Post('email/checkIfEmailExists')
+  async checkIfEmailExists(@Body() body: CheckEmailDto): Promise<{ exists: boolean }> {    
+    const user = await this.userService.checkIfEmailExists(body.email);    
+    return { exists: !!user };
   }
 
   @Post('login')

@@ -67,4 +67,8 @@ export class UsersService {
     }
 
   }
+
+  async checkIfEmailExists(email: string) {    
+    return await this.userRepository.findOneBy({ email });
+  }
 }

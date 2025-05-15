@@ -18,6 +18,7 @@ export class ProfileComponent {
     this.profileForm = this.fb.group({
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
+      username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       custom_profil_color: ['#333333', Validators.required],
       custom_username_color: ['#cccccc', Validators.required]

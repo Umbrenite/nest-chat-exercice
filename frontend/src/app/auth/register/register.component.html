@@ -1,9 +1,16 @@
 <div class="auth-container">
     <h2>Inscription</h2>
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-      <input type="text" placeholder="Nom d'utilisateur" formControlName="username" />
-      <input type="email" placeholder="Email" formControlName="email" />
-      <input type="password" placeholder="Mot de passe" formControlName="password" />
+      <input type="text" formControlName="lastname" placeholder="Nom"/>
+      <input type="text" formControlName="firstname" placeholder="Prénom"/>
+      <input type="text" formControlName="username" placeholder="Nom d'utilisateur"/>
+      <input type="email" formControlName="email" placeholder="Email"/>
+      <input type="password" formControlName="password" placeholder="Mot de passe"/>
+      <label>Couleur de bulle</label>
+      <input type="color" formControlName="custom_profil_color" />
+
+      <label>Couleur de pseudo</label>
+      <input type="color" formControlName="custom_username_color" />
       <button type="submit" [disabled]="registerForm.invalid">S'inscrire</button>
     </form>
     <p class="switch-link">Déjà un compte ? <a routerLink="/login">Se connecter</a></p>
