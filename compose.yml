@@ -38,6 +38,7 @@ services:
       POSTGRES_DB: mydb
     volumes:
       - db-data:/var/lib/postgresql/data
+      - ./script.sql:/script.sql
 
   adminer:
     image: adminer
