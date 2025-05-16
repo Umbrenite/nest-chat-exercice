@@ -1,3 +1,13 @@
 <div class="chat-container">
-    <h1>Selectionnez un groupe à travers la barre latérale gauche</h1>
+    <h2 *ngIf="listOfGroups.length == 0">Vous avez rejoint l'ensemble des groupes disponibles, veuillez cliquer sur l'un des groupes situés à gauche de votre écran</h2>
+    <div class="group-list" *ngIf="listOfGroups.length > 0">
+        <div class="group-card" *ngFor="let group of listOfGroups">
+            <img [src]="group.icon_url" alt="Icône du groupe" class="group-icon" />
+            <div class="group-content">
+            <h3>{{ group.title }}</h3>
+            <p>{{ group.description }}</p>
+            <button class="group-button" (click)="addGroup(group.id)">Accéder</button>
+            </div>
+        </div>
+    </div>
 </div>

@@ -31,8 +31,10 @@ export class SideNavbarComponent {
         try {
           this.currentLoggedInUserId = this.authService.getToken();
           this.listGroupIds = (await apiClient.get(`users/${this.currentLoggedInUserId}`)).data.group_ids;
-          for (const groupId of this.listGroupIds) {
-            this.listOfGroups.push((await apiClient.get(`groups/${groupId}`)).data); 
+          if(this.listGroupIds != null) {
+            for (const groupId of this.listGroupIds) {
+              this.listOfGroups.push((await apiClient.get(`groups/${groupId}`)).data); 
+            }
           }
         } catch (error) {
           console.error("Erreur lors du fetch des groupes", error);
