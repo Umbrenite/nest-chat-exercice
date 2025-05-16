@@ -1,24 +1,27 @@
-<div class="edit-profile-container">
+<div class="center">
+  <div class="edit-profile-container">
   <h2>Édition du profil</h2>
-  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-    <label>Prénom</label>
-    <input type="text" formControlName="firstname" />
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+      <label>Prénom</label>
+      <input type="text" formControlName="firstname" />
 
-    <label>Nom</label>
-    <input type="text" formControlName="lastname" />
+      <label>Nom</label>
+      <input type="text" formControlName="lastname" />
 
-    <label>Username</label>
-    <input type="text" formControlName="username" />
+      <label>Username</label>
+      <input type="text" formControlName="username" />
 
-    <label>Email</label>
-    <input type="email" formControlName="email" />
+      <label>Email</label>
+      <input type="email" formControlName="email" />
 
-    <label>Couleur de bulle</label>
-    <input type="color" formControlName="custom_profil_color" />
+      <label>Couleur de bulle</label>
+      <input type="color" formControlName="custom_profil_color" class="input-color" />
 
-    <label>Couleur de pseudo</label>
-    <input type="color" formControlName="custom_username_color" />
+      <label>Couleur de pseudo</label>
+      <input type="color" formControlName="custom_username_color" class="input-color" />
 
-    <button type="submit" [disabled]="profileForm.invalid">Enregistrer</button>
-  </form>
+      <button type="submit" [disabled]="profileForm.invalid">Enregistrer</button>
+    </form>
+  </div>
 </div>
+

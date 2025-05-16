@@ -15,10 +15,15 @@ export class UsersService {
   ) {}
 
 
-  async create(createUserDto: CreateUserDto) {
-    const user = this.userRepository.create(createUserDto);
-    return await this.userRepository.save(user);
-    }
+  async create(userData: CreateUserDto) {
+    const salt = await bcrypt.genSalt();
+    const hashedPassword = await bcrypt.hash(userData.password, salt);
+    const user = this.userRepository.create({
+      ...userData,
+      password: hashedPassword
+    });
+    return this.userRepository.save(user);
+  }
 
   findAll() {
     return this.userRepository.find();

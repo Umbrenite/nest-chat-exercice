@@ -4,6 +4,7 @@ import { Router, RouterLink } from '@angular/router';
 import apiClient from '../../config/axiosConfig';
 
 
+
 @Component({
   selector: 'register',
   imports: [ReactiveFormsModule, RouterLink],
@@ -26,11 +27,8 @@ export class RegisterComponent {
   }
 
   async onSubmit() {    
-    const checkIfUserEmailExists = await apiClient.post("/users/email/checkIfEmailExists", {email: this.registerForm.value.email});
-    console.log(checkIfUserEmailExists.data);
-    
+    const checkIfUserEmailExists = await apiClient.post("/users/email/checkIfEmailExists", {email: this.registerForm.value.email});    
     if (this.registerForm.valid && checkIfUserEmailExists.data.exists === false) {
-      // TODO : HASHER LE PASSWORD POUR LE REGISTER
       await apiClient.post("/users", this.registerForm.value);
       this.router.navigate(["/login"]);
     }

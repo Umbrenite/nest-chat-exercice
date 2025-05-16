@@ -7,10 +7,10 @@
       <input type="email" formControlName="email" placeholder="Email"/>
       <input type="password" formControlName="password" placeholder="Mot de passe"/>
       <label>Couleur de bulle</label>
-      <input type="color" formControlName="custom_profil_color" />
+      <input type="color" formControlName="custom_profil_color" class="color-input" value="#000000" />
 
       <label>Couleur de pseudo</label>
-      <input type="color" formControlName="custom_username_color" />
+      <input type="color" formControlName="custom_username_color" class="color-input"  value="#000000" />
       <button type="submit" [disabled]="registerForm.invalid">S'inscrire</button>
     </form>
     <p class="switch-link">Déjà un compte ? <a routerLink="/login">Se connecter</a></p>
