@@ -1,4 +1,4 @@
-# Exercice Nest Arthur BLANDIN
+# Exercice Nest Arthur BLANDIN Pierre EVRARD
 
 ## Lancer le projet
 
@@ -57,4 +57,108 @@ Une fois ta couleur changée, tu valides le formulaire, et voilà ! Tout le mond
 - On peut envoyer des messages via différents comptes qu'on peut créer, et voir un aperçu des messages dans le groupe en fonction de qui l'a envoyé
 - On peut modifier la couleur de notre bulle de discussion, et tout le monde peut le voir
 
-Si jamais y'a le moindre soucis avec le projet, n'hésite pas à revenir vers moi (Sur discord - **Umbrenite**)
+Si jamais il y a le moindre soucis avec le projet, n'hésite pas à revenir vers nous.
+
+# Nest Chat Application
+
+Une application de chat en temps réel construite avec NestJS et Angular.
+
+## Fonctionnalités
+
+- Authentification des utilisateurs
+- Création et gestion de groupes de chat
+- Chat en temps réel avec WebSocket
+- Interface utilisateur moderne et responsive
+- Personnalisation des couleurs de profil et de nom d'utilisateur
+- Messages en temps réel sans rechargement de page
+- Gestion des groupes (création, suppression, rejoindre, quitter)
+
+## Technologies utilisées
+
+### Backend (NestJS)
+- NestJS
+- TypeScript
+- PostgreSQL
+- TypeORM
+- WebSocket (Socket.io)
+- JWT pour l'authentification
+
+### Frontend (Angular)
+- Angular 17
+- TypeScript
+- SCSS pour le styling
+- WebSocket pour la communication en temps réel
+- RxJS pour la gestion des observables
+
+## Installation
+
+### Prérequis
+- Node.js (v18 ou supérieur)
+- PostgreSQL
+- npm ou yarn
+
+### Backend
+```bash
+cd backend
+npm install
+# Configurer les variables d'environnement dans .env
+npm run start:dev
+```
+
+### Frontend
+```bash
+cd frontend
+npm install
+# Configurer les variables d'environnement dans src/environments/environment.ts
+npm start
+```
+
+## Configuration
+
+### Backend (.env)
+```env
+DATABASE_URL=postgresql://user:password@localhost:5432/nest_chat
+JWT_SECRET=your_jwt_secret
+```
+
+### Frontend (environment.ts)
+```typescript
+export const environment = {
+  production: false,
+  apiUrl: 'http://localhost:3000',
+  wsUrl: 'ws://localhost:3000'
+};
+```
+
+## Fonctionnalités détaillées
+
+### Chat en temps réel
+- Les messages sont envoyés et reçus instantanément
+- Pas besoin de recharger la page pour voir les nouveaux messages
+- Indication visuelle des messages envoyés et reçus
+- Défilement automatique vers le bas lors de l'envoi de messages
+
+### Gestion des groupes
+- Création de nouveaux groupes
+- Invitation d'utilisateurs
+- Possibilité de quitter un groupe
+- Interface intuitive pour la gestion des groupes
+
+### Interface utilisateur
+- Design moderne et épuré
+- Responsive sur tous les appareils
+- Animations fluides
+- Thème sombre/clair
+- Personnalisation des couleurs
+
+## Contribution
+
+1. Fork le projet
+2. Créer une branche pour votre fonctionnalité (`git checkout -b feature/AmazingFeature`)
+3. Commit vos changements (`git commit -m 'feat: Add some AmazingFeature'`)
+4. Push vers la branche (`git push origin feature/AmazingFeature`)
+5. Ouvrir une Pull Request
+
+## Licence
+
+Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
