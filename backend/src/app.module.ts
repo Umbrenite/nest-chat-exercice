@@ -9,10 +9,11 @@ import { UsersModule } from './users/users.module';
 import { GroupsModule } from './groups/groups.module';
 import { User } from './users/entities/user.entity';
 import { Group } from './groups/entities/group.entity';
-
+import { ChatModule } from './chat/chat.module';
 
 @Module({
-  imports: [DiscussionsModule,
+  imports: [
+    DiscussionsModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'db',
@@ -25,6 +26,7 @@ import { Group } from './groups/entities/group.entity';
     }),
     UsersModule,
     GroupsModule,
+    ChatModule,
   ],
   controllers: [AppController],
   providers: [AppService],
