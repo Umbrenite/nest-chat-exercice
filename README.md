@@ -13,6 +13,8 @@ Ce que ça va faire :
 -> Lancer les conteneurs (Front, Back, DB et Adminer)
 -> Ajouter des groupes de discussion dans la table des groupes pour grouper les discussions
 
+> Si jamais il y'a un soucis de dépendances sur le front, il faut relancer le `./init.sh`
+
 
 ## Comment se compose le projet ?
 
