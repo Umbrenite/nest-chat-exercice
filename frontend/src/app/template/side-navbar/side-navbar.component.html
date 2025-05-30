@@ -1,12 +1,19 @@
 <div class="side-navbar">
-    <a href="/"><group-icon iconUrl="https://cdn-icons-png.freepik.com/256/1077/1077114.png?semt=ais_hybrid" /></a>
-    <ng-content *ngIf="isLoggedIn && listGroupIds != null">
-        <ng-content *ngFor="let group of listOfGroups">
-            <a href="/groups/{{group.id}}"><group-icon iconUrl={{group.icon_url}} /></a>
-        </ng-content>
-    </ng-content>
-    <ng-content *ngIf="isLoggedIn">
-        <a href="/profile"><group-icon class="static-profile-group" iconUrl="https://static.thenounproject.com/png/322479-200.png" /></a>
-        <group-icon class="static-logout-group" iconUrl="https://cdn1.iconfinder.com/data/icons/heroicons-ui/24/logout-1024.png" (click)="logout()" />
-    </ng-content>
+    <a href="/" class="home-link">
+        <group-icon iconUrl="https://cdn-icons-png.flaticon.com/512/1946/1946488.png"></group-icon>
+    </a>
+    <div class="groups-container" *ngIf="isLoggedIn && listGroupIds != null">
+        <a *ngFor="let group of listOfGroups; let i = index" 
+           href="/groups/{{group.id}}" 
+           class="group-link animate"
+           [style.animation-delay]="i * 0.1 + 's'">
+            <img [src]="group.icon_url" alt="Group icon" class="group-icon-img">
+        </a>
+    </div>
+    <div class="bottom-links" *ngIf="isLoggedIn">
+        <a href="/profile" class="profile-link">
+            <group-icon iconUrl="https://cdn-icons-png.flaticon.com/512/1077/1077063.png"></group-icon>
+        </a>
+        <group-icon class="logout-link" iconUrl="https://cdn-icons-png.flaticon.com/512/1828/1828479.png" (click)="logout()"></group-icon>
+    </div>
 </div>

@@ -17,7 +17,7 @@ export class SideNavbarComponent {
   constructor(private authService: AuthService, private router: Router) {
   }
   currentLoggedInUserId : string | null = "";
-  listGroupIds : number[] = [];
+  listGroupIds : string[] = [];
   listOfGroups: Group[] = [];
   isLoggedIn = false;
 
@@ -30,11 +30,14 @@ export class SideNavbarComponent {
       if (this.isLoggedIn) {
         try {
           this.currentLoggedInUserId = this.authService.getToken();
-          this.listGroupIds = (await apiClient.get(`users/${this.currentLoggedInUserId}`)).data.group_ids;
+          const userResponse = await apiClient.get(`users/${this.currentLoggedInUserId}`);
+          this.listGroupIds = userResponse.data.group_ids;
+          
           if(this.listGroupIds != null) {
-            for (const groupId of this.listGroupIds) {
-              this.listOfGroups.push((await apiClient.get(`groups/${groupId}`)).data); 
-            }
+            const allGroups = (await apiClient.get("groups")).data;
+            this.listOfGroups = allGroups.filter((group: Group) => 
+              this.listGroupIds.includes(group.id.toString())
+            );
           }
         } catch (error) {
           console.error("Erreur lors du fetch des groupes", error);
@@ -55,5 +58,4 @@ export class SideNavbarComponent {
   ngOnDestroy(): void {
     this.authSubscription?.unsubscribe();
   }
-
 }

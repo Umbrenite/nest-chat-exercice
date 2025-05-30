@@ -1,15 +1,20 @@
 <div class="chat-container">
-    <div class="chat-container-center" *ngFor="let chat of fetchDiscussionList; let i = index">
-        <ng-content *ngIf="fetchUserPerChat[i]">
-            <chat-bubble 
-            [message]="chat.message"
-            username="{{fetchUserPerChat[i]?.username}}"
-            [isUserMessage]="+chat.user_id === currentLoggedInUserId"
-            [timestamp]="chat.timestamp.toString()"
-            chatBubbleColor = "{{fetchUserPerChat[i]?.custom_profil_color}}"
-            chatUsernameColor = "{{fetchUserPerChat[i]?.custom_username_color}}">
-            </chat-bubble>
-        </ng-content>
+    <div class="group-header">
+        <button class="leave-group-btn" (click)="leaveGroup()">EXIT</button>
+    </div>
+    <div class="chat-container-center" #chatContainer>
+        <div *ngFor="let chat of fetchDiscussionList; let i = index">
+            <ng-content *ngIf="fetchUserPerChat[i]">
+                <chat-bubble 
+                    [message]="chat.message"
+                    username="{{fetchUserPerChat[i]?.username}}"
+                    [isUserMessage]="+chat.user_id === currentLoggedInUserId"
+                    [timestamp]="chat.timestamp.toString()"
+                    chatBubbleColor="{{fetchUserPerChat[i]?.custom_profil_color}}"
+                    chatUsernameColor="{{fetchUserPerChat[i]?.custom_username_color}}">
+                </chat-bubble>
+            </ng-content>
+        </div>
     </div>
     <chat-input (sendMessage)="handleMessage($event)"></chat-input>
 </div>

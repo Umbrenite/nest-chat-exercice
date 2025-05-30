@@ -1,24 +1,38 @@
 <div class="center">
   <div class="edit-profile-container">
-  <h2>Édition du profil</h2>
+    <h2>Édition du profil</h2>
     <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-      <label>Prénom</label>
-      <input type="text" formControlName="firstname" />
+      <div class="form-row">
+        <div class="form-group">
+          <label>Prénom</label>
+          <input type="text" formControlName="firstname" />
+        </div>
+        <div class="form-group">
+          <label>Nom</label>
+          <input type="text" formControlName="lastname" />
+        </div>
+      </div>
 
-      <label>Nom</label>
-      <input type="text" formControlName="lastname" />
+      <div class="form-group">
+        <label>Username</label>
+        <input type="text" formControlName="username" />
+      </div>
 
-      <label>Username</label>
-      <input type="text" formControlName="username" />
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" formControlName="email" />
+      </div>
 
-      <label>Email</label>
-      <input type="email" formControlName="email" />
-
-      <label>Couleur de bulle</label>
-      <input type="color" formControlName="custom_profil_color" class="input-color" />
-
-      <label>Couleur de pseudo</label>
-      <input type="color" formControlName="custom_username_color" class="input-color" />
+      <div class="form-row">
+        <div class="form-group">
+          <label>Couleur de bulle</label>
+          <input type="color" formControlName="custom_profil_color" class="input-color" />
+        </div>
+        <div class="form-group">
+          <label>Couleur de pseudo</label>
+          <input type="color" formControlName="custom_username_color" class="input-color" />
+        </div>
+      </div>
 
       <button type="submit" [disabled]="profileForm.invalid">Enregistrer</button>
     </form>

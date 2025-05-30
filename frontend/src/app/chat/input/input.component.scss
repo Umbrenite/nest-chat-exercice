@@ -1,44 +1,60 @@
 .chat-input-container {
   display: flex;
   align-items: center;
-  background-color: #1f1f1f;
-  border-top: 1px solid #333;
-  border-radius: 15px;
-  padding: 12px;
-  gap: 8px;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: transparent;
 
   input {
     flex: 1;
-    padding: 10px 14px;
-    border-radius: 999px;
-    border: none;
-    background-color: #2b2b2b;
-    color: #fff;
+    padding: 12px 20px;
+    border-radius: 24px;
+    border: 1px solid #e0e0e0;
+    background-color: white;
+    color: #333;
     font-size: 15px;
     outline: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+
+    &:focus {
+      border-color: #2196f3;
+      box-shadow: 0 2px 8px rgba(33, 150, 243, 0.1);
+    }
 
     &::placeholder {
-      color: #888;
+      color: #999;
     }
   }
 
   button {
-    background-color: #3a3a3a;
-    color: #fff;
+    background-color: #2196f3;
+    color: white;
     border: none;
-    padding: 10px 14px;
+    padding: 12px;
     border-radius: 50%;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.2s;
+    transition: all 0.2s ease;
+    min-width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 
     &:hover {
-      background-color: #555;
+      background-color: #1976d2;
+      transform: scale(1.05);
     }
 
     &:disabled {
-      opacity: 0.4;
+      background-color: #e0e0e0;
       cursor: not-allowed;
+      transform: none;
     }
   }
 }

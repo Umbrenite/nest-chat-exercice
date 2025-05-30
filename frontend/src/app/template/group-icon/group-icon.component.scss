@@ -1,6 +1,26 @@
+:host {
+    display: block;
+    width: 45px;
+    height: 45px;
+}
+
+.group-icon-container {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-radius: 12px;
+    padding: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+
+    &:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transform: scale(1.05);
+    }
+}
+
 .group-icon {
-    margin-top: 20px;
-    width:70px;
-    height:70px;
-    border-radius: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
